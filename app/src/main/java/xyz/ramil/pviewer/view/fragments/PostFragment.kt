@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,7 @@ import xyz.ramil.pviewer.data.Status
 import xyz.ramil.pviewer.model.PostModel
 import xyz.ramil.pviewer.view.WrapContentGridLayoutManager
 import xyz.ramil.pviewer.viewmodel.PViewerViewModel
-import xyz.ramil.pviewer.viewrepository.PostAdapter
+import xyz.ramil.pviewer.view.PostAdapter
 
 class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 

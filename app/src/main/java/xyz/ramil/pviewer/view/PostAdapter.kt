@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.viewrepository
+package xyz.ramil.pviewer.view
 
 import android.content.Context
 import android.view.LayoutInflater

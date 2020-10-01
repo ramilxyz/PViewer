@@ -22,7 +22,7 @@
             app:tabTextColor="@color/colorGray"
             app:tabSelectedTextColor="@color/colorPrimary"
             app:tabIndicatorColor="@color/colorPrimary"
-            app:tabMode="scrollable"
+            app:tabMode="fixed"
             app:tabGravity="center"
             android:minHeight="?attr/actionBarSize" />
 
@@ -43,7 +43,6 @@
 
             <xyz.ramil.pviewer.view.LockableViewPager
                 android:id="@+id/viewPager"
-                android:paddingBottom="40dp"
                 android:layout_below="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
