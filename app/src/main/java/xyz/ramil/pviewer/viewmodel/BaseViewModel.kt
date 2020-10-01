@@ -15,7 +15,6 @@ abstract class BaseViewModel : ViewModel() {
 
     var api: Api = NetworkService.retrofitService()
 
-
     fun <T> requestWithLiveData(
         liveData: MutableLiveData<Event<T>>,
         request: suspend () -> ResponseWrapper<T>) {
