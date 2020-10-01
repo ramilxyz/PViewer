@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.data
+package xyz.ramil.pikaviewer.data
 
 enum class Status {
     SUCCESS,

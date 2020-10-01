@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PViewer</string>
+    <string name="app_name">PikaViewer</string>
     <string name="postfeed">Post feed</string>
     <string name="savedposts">saved posts</string>
 </resources>

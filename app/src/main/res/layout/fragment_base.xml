@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <xyz.ramil.pviewer.view.LockableViewPager
+            <xyz.ramil.pikaviewer.view.LockableViewPager
                 android:id="@+id/viewPager"
                 android:layout_below="@+id/tabLayout"
                 android:layout_width="match_parent"

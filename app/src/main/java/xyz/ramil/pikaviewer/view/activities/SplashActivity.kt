@@ -1,9 +1,9 @@
-package xyz.ramil.pviewer.view.activities
+package xyz.ramil.pikaviewer.view.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import xyz.ramil.pviewer.R
+import xyz.ramil.pikaviewer.R
 
 class SplashActivity : AppCompatActivity() {
 

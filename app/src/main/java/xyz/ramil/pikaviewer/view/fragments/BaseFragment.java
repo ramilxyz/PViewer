@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.view.fragments;
+package xyz.ramil.pikaviewer.view.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-import xyz.ramil.pviewer.R;
-import xyz.ramil.pviewer.view.LockableViewPager;
-import xyz.ramil.pviewer.view.ViewPagerAdapter;
+import xyz.ramil.pikaviewer.R;
+import xyz.ramil.pikaviewer.view.LockableViewPager;
+import xyz.ramil.pikaviewer.view.ViewPagerAdapter;
 
 public class BaseFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.data
+package xyz.ramil.pikaviewer.data
 
 data class Event<out T>(val status: Status, val data: Any?, val error: Error?) {
 

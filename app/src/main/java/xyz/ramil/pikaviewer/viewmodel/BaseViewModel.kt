@@ -1,13 +1,13 @@
-package xyz.ramil.pviewer.viewmodel
+package xyz.ramil.pikaviewer.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import xyz.ramil.pviewer.data.Event
-import xyz.ramil.pviewer.data.network.Api
-import xyz.ramil.pviewer.data.network.NetworkService
+import xyz.ramil.pikaviewer.data.Event
+import xyz.ramil.pikaviewer.data.network.Api
+import xyz.ramil.pikaviewer.data.network.NetworkService
 
 abstract class BaseViewModel : ViewModel() {
 

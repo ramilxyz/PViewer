@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.view;
+package xyz.ramil.pikaviewer.view;
 
 import android.view.ViewGroup;
 

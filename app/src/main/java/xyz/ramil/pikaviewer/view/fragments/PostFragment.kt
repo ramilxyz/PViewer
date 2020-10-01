@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.view.fragments
+package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -12,12 +12,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import xyz.ramil.pviewer.R
-import xyz.ramil.pviewer.data.Status
-import xyz.ramil.pviewer.model.PostModel
-import xyz.ramil.pviewer.view.WrapContentGridLayoutManager
-import xyz.ramil.pviewer.viewmodel.PViewerViewModel
-import xyz.ramil.pviewer.view.PostAdapter
+import xyz.ramil.pikaviewer.R
+import xyz.ramil.pikaviewer.data.Status
+import xyz.ramil.pikaviewer.model.PostModel
+import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
+import xyz.ramil.pikaviewer.viewmodel.PViewerViewModel
+import xyz.ramil.pikaviewer.view.PostAdapter
 
 class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 

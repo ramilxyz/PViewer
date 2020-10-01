@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.data.network
+package xyz.ramil.pikaviewer.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Companion.invoke

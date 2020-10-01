@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.view
+package xyz.ramil.pikaviewer.view
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import xyz.ramil.pviewer.R
-import xyz.ramil.pviewer.model.PostModel
+import xyz.ramil.pikaviewer.R
+import xyz.ramil.pikaviewer.model.PostModel
 
 class PostAdapter(private var data: List<PostModel>, private val context: Context, view: View?) :
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {

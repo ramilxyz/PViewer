@@ -1,4 +1,4 @@
-package xyz.ramil.pviewer.model
+package xyz.ramil.pikaviewer.model
 
 data class PostModel(
     var id: Long?,

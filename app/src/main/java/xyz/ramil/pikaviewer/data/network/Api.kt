@@ -1,8 +1,8 @@
-package xyz.ramil.pviewer.data.network
+package xyz.ramil.pikaviewer.data.network
 
 import retrofit2.http.GET
 import retrofit2.http.Query
-import xyz.ramil.pviewer.model.PostModel
+import xyz.ramil.pikaviewer.model.PostModel
 
 interface Api {
 
