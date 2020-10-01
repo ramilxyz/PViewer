@@ -4,6 +4,6 @@ package xyz.ramil.pviewer.model
         var id: Long?,
         var title: String?,
         var body: String?,
-        val image: String?
+        val images: List<String?>
     )
 

@@ -5,9 +5,9 @@ import xyz.ramil.pviewer.data.Event
 import xyz.ramil.pviewer.model.FeedModel
 import xyz.ramil.pviewer.model.PostModel
 
-class ActivityViewModel : BaseViewModel() {
+class PViewerViewModel : BaseViewModel() {
 
-    val feedLiveData = MutableLiveData<Event<FeedModel>>()
+    val feedLiveData = MutableLiveData<Event<List<PostModel>>>()
     val postLiveData = MutableLiveData<Event<PostModel>>()
 
     fun getPost(id: Int) {

@@ -10,6 +10,7 @@ import xyz.ramil.pviewer.data.ResponseWrapper
 import xyz.ramil.pviewer.data.network.Api
 import xyz.ramil.pviewer.data.network.NetworkService
 import xyz.ramil.pviewer.model.FeedModel
+import xyz.ramil.pviewer.model.PostModel
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -17,17 +18,15 @@ abstract class BaseViewModel : ViewModel() {
 
     fun <T> requestWithLiveData(
         liveData: MutableLiveData<Event<T>>,
-        request: suspend () -> ResponseWrapper<T>) {
+        request: suspend () -> Any) {
 
         liveData.postValue(Event.loading())
 
         this.viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = request.invoke()
-                if (response.data != null) {
-                    liveData.postValue(Event.success(response.data))
-                } else if (response.error != null) {
-                    liveData.postValue(Event.error(response.error))
+                if (response != null) {
+                    liveData.postValue(Event.success(response))
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

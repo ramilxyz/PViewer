@@ -40,6 +40,7 @@ object NetworkService {
         .addInterceptor(baseInterceptor)
         .build()
 
+
     fun retrofitService(): Api {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)

@@ -1,5 +1,6 @@
 package xyz.ramil.pviewer.data.network
 
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 import xyz.ramil.pviewer.data.ResponseWrapper
@@ -10,11 +11,10 @@ interface Api {
 
     @GET("feed.php")
     suspend fun getFeed(
-    ): ResponseWrapper<FeedModel>
+    ): List<PostModel>
 
     @GET("story.php")
     suspend fun getStory(
         @Query("id") post: Int
-    ): ResponseWrapper<PostModel>
-
+    ): PostModel
 }
