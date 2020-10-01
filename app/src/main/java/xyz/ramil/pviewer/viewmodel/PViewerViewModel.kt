@@ -2,7 +2,6 @@ package xyz.ramil.pviewer.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import xyz.ramil.pviewer.data.Event
-import xyz.ramil.pviewer.model.FeedModel
 import xyz.ramil.pviewer.model.PostModel
 
 class PViewerViewModel : BaseViewModel() {

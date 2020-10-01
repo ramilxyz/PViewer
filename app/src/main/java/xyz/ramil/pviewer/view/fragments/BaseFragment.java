@@ -18,9 +18,8 @@ import xyz.ramil.pviewer.view.ViewPagerAdapter;
 
 public class BaseFragment extends Fragment {
 
-    private View view;
-
     public ViewPagerAdapter adapter;
+    private View view;
     private LockableViewPager viewPager;
     private TabLayout tabLayout;
 

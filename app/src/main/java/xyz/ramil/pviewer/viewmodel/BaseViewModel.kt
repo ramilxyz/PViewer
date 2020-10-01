@@ -6,11 +6,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.ramil.pviewer.data.Event
-import xyz.ramil.pviewer.data.ResponseWrapper
 import xyz.ramil.pviewer.data.network.Api
 import xyz.ramil.pviewer.data.network.NetworkService
-import xyz.ramil.pviewer.model.FeedModel
-import xyz.ramil.pviewer.model.PostModel
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -18,7 +15,8 @@ abstract class BaseViewModel : ViewModel() {
 
     fun <T> requestWithLiveData(
         liveData: MutableLiveData<Event<T>>,
-        request: suspend () -> Any) {
+        request: suspend () -> Any
+    ) {
 
         liveData.postValue(Event.loading())
 

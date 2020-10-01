@@ -10,7 +10,7 @@ import java.util.*
 class LockableViewPager : ViewPager {
     private var swipeable = false
 
-    constructor(context: Context?) : super(context!!) {}
+    constructor(context: Context?) : super(context!!)
     constructor(context: Context?, attrs: AttributeSet?) : super(
         context!!, attrs
     ) {
@@ -32,14 +32,6 @@ class LockableViewPager : ViewPager {
             Log.e("LockableViewPager::", Objects.requireNonNull(e.message))
         }
         return false
-    }
-
-    override fun setCurrentItem(item: Int) {
-        super.setCurrentItem(item)
-    }
-
-    override fun setCurrentItem(item: Int, smoothScroll: Boolean) {
-        super.setCurrentItem(item, smoothScroll)
     }
 
     fun setSwipeable(swipeable: Boolean) {

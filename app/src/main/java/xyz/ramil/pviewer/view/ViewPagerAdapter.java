@@ -62,7 +62,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public void clearFragments() {
         mFragmentList.clear();
-        mFragmentTitleList.clear();;
+        mFragmentTitleList.clear();
     }
 
     public List<Fragment> getmFragmentList() {

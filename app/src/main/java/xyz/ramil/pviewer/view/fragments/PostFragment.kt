@@ -1,7 +1,6 @@
 package xyz.ramil.pviewer.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import xyz.ramil.pviewer.R
 import xyz.ramil.pviewer.data.Status
-import xyz.ramil.pviewer.model.FeedModel
 import xyz.ramil.pviewer.model.PostModel
 import xyz.ramil.pviewer.viewmodel.PViewerViewModel
 
@@ -92,8 +90,7 @@ class PostFragment : Fragment() {
     private fun viewOneSuccess2(data: Any?) {
 
 
-
-            Toast.makeText(context, "${(data as PostModel).title}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "${(data as PostModel).title}", Toast.LENGTH_SHORT).show()
 
     }
 
