@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import xyz.ramil.pikaviewer.R
+import xyz.ramil.pikaviewer.data.PostRepo
 import xyz.ramil.pikaviewer.data.Status
-import xyz.ramil.pikaviewer.database.DataBaseManager
 import xyz.ramil.pikaviewer.model.PostModel
 import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
 import xyz.ramil.pikaviewer.viewmodel.PViewerViewModel
@@ -28,7 +27,6 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     var contentLayout: FrameLayout? = null
     var postAdapter: PostAdapter? = null
 
-    val data : LiveData<List<PostModel>>? = DataBaseManager.get()?.postClass?.allPosts
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,9 +44,9 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         observeGetPosts2()
         pViewerViewModel?.getFeed()
         pViewerViewModel?.getPost(1)
-        data?.observe(viewLifecycleOwner, Observer { postModels->
-            postModels?.let { postAdapter?.update(it, view) }
-        })
+
+
+
 
     }
 
@@ -67,8 +65,16 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         (recyclerView?.getLayoutManager() as WrapContentGridLayoutManager).setSpanCount(1)
         postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) };
         recyclerView?.adapter = postAdapter
+        observerRvData()
+
     }
 
+    fun observerRvData() {
+        PostRepo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
+            postAdapter?.update(data, view)
+
+        })
+    }
 
     private fun observeGetPosts() {
         pViewerViewModel?.feedLiveData?.observe(viewLifecycleOwner, Observer {
@@ -101,9 +107,15 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         val usersList: MutableList<PostModel>? = data as MutableList<PostModel>?
         usersList?.shuffle()
 
+
         usersList?.forEach {
-            DataBaseManager.get()?.PostClass()?.addPost(it)
+            PostRepo.insertData(context!!, it)
         }
+
+
+
+     //postAdapter?.update(usersList as List<PostModel>, view)
+
 
 
     }
@@ -119,8 +131,6 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun viewOneSuccess2(data: Any?) {
-
-
 
     }
 
