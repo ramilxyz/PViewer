@@ -27,9 +27,9 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = data[position].title
         holder.body.text = data[position].body
-        if (data[position].images != null && !data[position].images.isEmpty()) {
+        if (data[position].images != null && !data[position].images?.isEmpty()!!) {
             holder.image.visibility = View.VISIBLE
-            val url = data[position].images[0]!!
+            val url = data[position].images?.get(0)!!
             Glide.with(context)
                 .load(url)
                 .apply(

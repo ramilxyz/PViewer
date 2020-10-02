@@ -1,7 +1,6 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,26 +22,9 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private var pViewerViewModel: PViewerViewModel? = null
     var swiper: SwipeRefreshLayout? = null
-
-    //AppBarLayout appbar;
     var recyclerView: RecyclerView? = null
     var contentLayout: FrameLayout? = null
-
     var postAdapter: PostAdapter? = null
-//    var adapterPagination: CameraPaginationAdapter? = null
-//    var adapterFav: CameraFavAdapter? = null
-
-
-
-
-
-    var currentOrientation = 0
-    var displayMetrics: DisplayMetrics? = null
-
-    private val TAG = "TAG"
-    private val ACTION_UPDATE = "action_camera_update_data"
-    private val ACTION_CHECK_GROUP = "action_group_checked"
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,9 +44,6 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         pViewerViewModel?.getPost(1)
     }
 
-
-
-
     fun initView() {
         swiper = view!!.findViewById(R.id.cam_swiper)
         swiper?.setOnRefreshListener(this)
@@ -73,18 +52,13 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         recyclerView?.setLayoutManager(WrapContentGridLayoutManager(activity, 1))
         contentLayout = view!!.findViewById<FrameLayout>(R.id.rootView)
 
-        setupRV()
-
-
+        setupRecyclerView()
     }
 
-    fun setupRV() {
-
+    fun setupRecyclerView() {
         (recyclerView?.getLayoutManager() as WrapContentGridLayoutManager).setSpanCount(1)
         postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) };
-
         recyclerView?.adapter = postAdapter
-
     }
 
 
