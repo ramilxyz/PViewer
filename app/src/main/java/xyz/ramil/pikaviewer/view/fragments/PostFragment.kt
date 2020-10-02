@@ -103,7 +103,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun viewOneSuccess(data: Any?) {
 
-        swiper?.isRefreshing = false
+
         val usersList: MutableList<PostModel>? = data as MutableList<PostModel>?
         usersList?.shuffle()
 
@@ -112,6 +112,8 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             PostRepo.insertData(context!!, it)
         }
 
+
+        swiper?.isRefreshing = false
 
 
      //postAdapter?.update(usersList as List<PostModel>, view)
@@ -122,6 +124,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun viewOneError(error: Error?) {
         swiper?.isRefreshing = false
+
         Toast.makeText(context, "${error?.message}", Toast.LENGTH_SHORT).show()
 
     }

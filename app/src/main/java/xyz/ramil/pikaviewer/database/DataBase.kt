@@ -5,9 +5,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import xyz.ramil.pikaviewer.model.PostModel
 
 @Database(entities = arrayOf(PostModel::class), version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class DataBase : RoomDatabase() {
 
     abstract fun postDao(): DAOAccess
