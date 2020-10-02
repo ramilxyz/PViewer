@@ -47,9 +47,17 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         holder.title.text = data[position].title
 
         if(data[position].body != null) {
+            if(data[position].body?.isEmpty()!!)
+                holder.body.visibility = View.GONE else
             holder.body.visibility = View.VISIBLE
             holder.body.text = data[position].body
         } else holder.body.visibility = View.GONE
+
+
+
+
+
+
 
 
         if (data[position].images != null && !data[position].images?.isEmpty()!!) {
