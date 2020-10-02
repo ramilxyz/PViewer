@@ -30,9 +30,7 @@ abstract class DataBase : RoomDatabase() {
                     .fallbackToDestructiveMigration().build()
 
                 return INSTANCE
-
             }
         }
-
     }
 }

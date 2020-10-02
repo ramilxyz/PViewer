@@ -72,8 +72,6 @@ class NestedCoordinatorLayout @JvmOverloads constructor(
 
     override fun onNestedScrollAccepted(child: View, target: View, axes: Int) {
         super.onNestedScrollAccepted(child, target, axes)
-
-        // Dispatch up to the nested parent
         startNestedScroll(axes and ViewCompat.SCROLL_AXIS_VERTICAL)
     }
 

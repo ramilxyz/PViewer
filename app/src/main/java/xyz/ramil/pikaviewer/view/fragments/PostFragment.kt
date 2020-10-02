@@ -28,7 +28,6 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     var postAdapter: PostAdapter? = null
     var isSave: Boolean = false
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

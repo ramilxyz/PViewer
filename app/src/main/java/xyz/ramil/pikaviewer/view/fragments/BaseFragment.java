@@ -54,11 +54,6 @@ public class BaseFragment extends Fragment {
             public void onPageSelected(int position) {
                 if (viewPager.getAdapter() != null && viewPager.getAdapter().getCount() > 2)
                     viewPager.setSwipeable(position != 0);
-/*                if (((MainActivity) requireActivity()).menu.findItem(R.id.action_layers).isVisible())
-                    ((MainActivity) requireActivity()).menu.findItem(R.id.action_layers).setVisible(false);
-                else
-                    ((MainActivity) requireActivity()).menu.findItem(R.id.action_layers).setVisible(true);*/
-                // Скрываем клвиатуру при смене вкладок
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                 View view = getActivity().getCurrentFocus();
                 if (view == null) {

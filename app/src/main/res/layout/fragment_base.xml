@@ -43,7 +43,6 @@
 
             <xyz.ramil.pikaviewer.view.LockableViewPager
                 android:id="@+id/viewPager"
-                android:layout_below="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
