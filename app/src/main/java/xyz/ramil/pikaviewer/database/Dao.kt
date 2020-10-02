@@ -17,4 +17,8 @@ interface DAOAccess {
     @Query("SELECT * FROM PostModel")
     fun getData(): LiveData<List<PostModel>>
 
+    @Query("SELECT * FROM PostModel WHERE  :id=id")
+    fun getPost(id: Long): PostModel?
+
+
 }

@@ -14,6 +14,8 @@ class Repo {
 
         var data: LiveData<List<PostModel>>? = null
 
+        var post: PostModel? = null
+
         fun initializeDB(context: Context): DataBase {
             return DataBase.getDataseClient(context)
         }
@@ -35,6 +37,16 @@ class Repo {
             data = postDataBase!!.postDao().getData()
 
             return data
+        }
+
+        fun getPost(context: Context, long: Long): PostModel? {
+
+            postDataBase = initializeDB(context)
+
+            post = postDataBase!!.postDao().getPost(long)
+
+
+            return post
         }
 
     }

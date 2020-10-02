@@ -1,7 +1,6 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,22 +61,15 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) }
         recyclerView?.adapter = postAdapter
         observerRvData()
-
     }
 
     fun observerRvData() {
         Repo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
-            if(isSave!!) {
-
-
-                data.forEach {
-                    Log.d("HHHHHHHHHH", ""+it.save)
-                }
-
-                var a = data.filter { it.save == true }
+            if (isSave) {
+                val a = data.filter { it.save == true }
                 postAdapter?.update(a, view)
             } else {
-               postAdapter?.update(data, view)
+                postAdapter?.update(data, view)
             }
 
         })
@@ -101,8 +93,10 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         val usersList: MutableList<PostModel>? = data as MutableList<PostModel>?
         usersList?.shuffle()
         usersList?.forEach {
-            it.save = false
-            Repo.insertData(context!!, it)
+            if (!Repo.getPost(context!!, it.id!!)?.save!!) {
+                it.save = false
+                Repo.insertData(context!!, it)
+            }
         }
         swiper?.isRefreshing = false
     }

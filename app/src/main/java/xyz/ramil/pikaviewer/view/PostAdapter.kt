@@ -1,7 +1,6 @@
 package xyz.ramil.pikaviewer.view
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,35 +46,34 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
 
         holder.menu.setOnClickListener {
 
-            val pop= PopupMenu(context,it)
+            val pop = PopupMenu(context, it)
             pop.inflate(R.menu.popup_post)
 
-            if(data[position].save!!) {
+            if (data[position].save!!) {
                 pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
             } else {
                 pop.menu.get(0).title = context.getString(R.string.save)
             }
 
-            pop.setOnMenuItemClickListener {item->
+            pop.setOnMenuItemClickListener { item ->
 
-                when(item.itemId) {
-                 R.id.itemSave ->
-                 {
-                     if(!data[position].save!!) {
+                when (item.itemId) {
+                    R.id.itemSave -> {
+                        if (!data[position].save!!) {
 
-                         var item = data[position]
-                         item.save = true
-                         Repo.insertData(context, item)
-                         pop.menu.get(0).title = context.getString(R.string.save)
+                            var item = data[position]
+                            item.save = true
+                            Repo.insertData(context, item)
+                            pop.menu.get(0).title = context.getString(R.string.save)
 
-                     } else {
+                        } else {
 
-                         var item = data[position]
-                         item.save = false
-                         Repo.insertData(context, item)
-                         pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
-                     }
-                 }
+                            var item = data[position]
+                            item.save = false
+                            Repo.insertData(context, item)
+                            pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
+                        }
+                    }
                 }
                 true
             }
