@@ -38,7 +38,7 @@ class DataBaseManager {
         val allPosts: LiveData<List<PostModel>>
             get() = database!!.postDao().postsLiveData
 
-        fun delePosts() {
+        fun deletPosts() {
             database!!.postDao().delete()
         }
     }
