@@ -8,12 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.get
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.database.Repo
 import xyz.ramil.pikaviewer.model.PostModel
+
 
 class PostAdapter(private var data: List<PostModel>, private val context: Context, view: View?) :
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {
@@ -28,6 +30,27 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+
+        var smallImageAdapter: SmallImageAdapter? = null
+        var recyclerView: RecyclerView? = null
+
+        recyclerView = holder.rv
+        recyclerView.setHasFixedSize(true)
+
+        val horizontalLayoutManagaer =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = horizontalLayoutManagaer
+
+        smallImageAdapter = context?.let { SmallImageAdapter(mutableListOf(), it) }
+
+        recyclerView.adapter = smallImageAdapter
+
+        smallImageAdapter.update(data[position].images)
+
+
+
+
         holder.title.text = data[position].title
         holder.body.text = data[position].body
         if (data[position].images != null && !data[position].images?.isEmpty()!!) {
@@ -91,6 +114,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         val body: TextView
         val image: ImageView
         val menu: ImageView
+        val rv:RecyclerView
         override fun onClick(view: View) {}
 
         init {
@@ -99,6 +123,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             body = view.findViewById(R.id.tvPostBody)
             image = view.findViewById(R.id.ivPicture)
             menu = view.findViewById(R.id.ivMenu)
+            rv = view.findViewById(R.id.rvSmall)
         }
     }
 }

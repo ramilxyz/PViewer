@@ -9,7 +9,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/nav_cams"
+        android:id="@+id/fNav"
         android:name="xyz.ramil.pikaviewer.view.fragments.BaseFragment"
         tools:layout="@layout/fragment_base"
         app:layout_constraintBottom_toBottomOf="parent"
