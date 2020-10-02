@@ -21,14 +21,14 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/cam_swiper"
+            android:id="@+id/swiper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/cam_rv"
+                android:id="@+id/rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite"
