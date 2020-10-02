@@ -110,7 +110,9 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun connectionError(error: Error?) {
         swiper?.isRefreshing = false
-        Toast.makeText(context, "${error?.message}", Toast.LENGTH_SHORT).show()
+        if(error?.message != null)
+        Toast.makeText(context, "${error?.message}", Toast.LENGTH_SHORT).show() else
+            Toast.makeText(context, getString(R.string.error), Toast.LENGTH_SHORT).show()
     }
 
     override fun onRefresh() {
