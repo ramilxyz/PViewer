@@ -19,7 +19,7 @@ import xyz.ramil.pikaviewer.view.PostAdapter
 import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
 import xyz.ramil.pikaviewer.viewmodel.PViewerViewModel
 
-class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private var pViewerViewModel: PViewerViewModel? = null
     var swiper: SwipeRefreshLayout? = null
