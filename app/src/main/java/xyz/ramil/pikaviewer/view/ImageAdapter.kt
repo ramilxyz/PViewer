@@ -11,8 +11,8 @@ import com.bumptech.glide.request.RequestOptions
 import xyz.ramil.pikaviewer.R
 
 
-class SmallImageAdapter(private var data: List<String?>?, private val context: Context) :
-    RecyclerView.Adapter<SmallImageAdapter.ViewHolder>() {
+class ImageAdapter(private var data: List<String?>?, private val context: Context) :
+    RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     fun update(data: List<String?>?) {
         this.data = data
@@ -21,7 +21,7 @@ class SmallImageAdapter(private var data: List<String?>?, private val context: C
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val rowItem =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_feed_small_image, parent, false)
         return ViewHolder(rowItem)
     }
 

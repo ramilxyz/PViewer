@@ -1,0 +1,66 @@
+package xyz.ramil.pikaviewer.view.fragments
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import xyz.ramil.pikaviewer.R
+import xyz.ramil.pikaviewer.model.PostModel
+import xyz.ramil.pikaviewer.view.ImageAdapter
+import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
+
+class PostFragment(postModel: PostModel) : Fragment() {
+    var recyclerView: RecyclerView? = null
+    var postAdapter: ImageAdapter? = null
+    var title: TextView? = null
+    var body: TextView? = null
+    var image: ImageView? = null
+    var menu: ImageView? = null
+    var postModel: PostModel? = null
+
+    init {
+        this.postModel = postModel
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_post, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+
+    }
+
+    fun initView() {
+
+        title = view?.findViewById(R.id.tvPostTitle)
+        body = view?.findViewById(R.id.tvPostBody)
+        menu = view?.findViewById(R.id.ivMenu)
+
+        title?.text = postModel?.title
+        body?.text = postModel?.body
+
+        recyclerView = view!!.findViewById(R.id.rvPost)
+        recyclerView?.setHasFixedSize(true)
+        recyclerView?.layoutManager = WrapContentGridLayoutManager(activity, 1)
+        setupRecyclerView()
+    }
+
+    fun setupRecyclerView() {
+        (recyclerView?.layoutManager as WrapContentGridLayoutManager).spanCount = 1
+        postAdapter = context?.let { ImageAdapter(mutableListOf(), it) }
+        recyclerView?.adapter = postAdapter
+        postAdapter?.update(postModel?.images)
+
+    }
+
+}

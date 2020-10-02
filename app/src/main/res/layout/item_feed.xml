@@ -74,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite"
                 app:spanCount="3"
-                tools:listitem="@layout/item_image" />
+                tools:listitem="@layout/item_feed_small_image" />
         </FrameLayout>
 
         <FrameLayout

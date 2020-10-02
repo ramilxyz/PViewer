@@ -25,7 +25,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val rowItem = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        val rowItem = LayoutInflater.from(parent.context).inflate(R.layout.item_feed, parent, false)
         return ViewHolder(rowItem)
     }
 
@@ -61,21 +61,19 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     }
 
     fun smallImageRvInit(holder: ViewHolder, position: Int) {
-        var smallImageAdapter: SmallImageAdapter? = null
+        var imageAdapter: ImageAdapter? = null
         var recyclerView: RecyclerView? = null
-
         recyclerView = holder.rv
         recyclerView.setHasFixedSize(true)
 
         val horizontalLayoutManagaer =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = horizontalLayoutManagaer
-        smallImageAdapter = context.let { SmallImageAdapter(mutableListOf(), it) }
-        recyclerView.adapter = smallImageAdapter
-        smallImageAdapter.update(data[position].images)
-
-
-
+        imageAdapter = context.let { ImageAdapter(mutableListOf(), it) }
+        recyclerView.adapter = imageAdapter
+        var images = data[position].images as MutableList<String>
+        images.removeAt(0)
+        imageAdapter.update(images)
     }
 
     fun menuClick(holder: ViewHolder, position: Int) {
