@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import xyz.ramil.pikaviewer.model.PostModel
 
-
 @Dao
 interface DAOAccess {
 
@@ -19,6 +18,4 @@ interface DAOAccess {
 
     @Query("SELECT * FROM PostModel WHERE  :id=id")
     fun getPost(id: Long): PostModel?
-
-
 }

@@ -21,30 +21,21 @@ class Repo {
         }
 
         fun insertData(context: Context, postModel: PostModel) {
-
             postDataBase = initializeDB(context)
-
             CoroutineScope(IO).launch {
-
                 postDataBase!!.postDao().InsertData(postModel)
             }
         }
 
         fun getData(context: Context): LiveData<List<PostModel>>? {
-
             postDataBase = initializeDB(context)
-
             data = postDataBase!!.postDao().getData()
-
             return data
         }
 
         fun getPost(context: Context, long: Long): PostModel? {
-
             postDataBase = initializeDB(context)
-
             post = postDataBase!!.postDao().getPost(long)
-
 
             return post
         }

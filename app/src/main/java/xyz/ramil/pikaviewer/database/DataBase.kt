@@ -1,6 +1,5 @@
 package xyz.ramil.pikaviewer.database
 
-
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room

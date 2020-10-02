@@ -17,7 +17,6 @@ abstract class BaseViewModel : ViewModel() {
         liveData: MutableLiveData<Event<T>>,
         request: suspend () -> Any
     ) {
-
         liveData.postValue(Event.loading())
 
         this.viewModelScope.launch(Dispatchers.IO) {
