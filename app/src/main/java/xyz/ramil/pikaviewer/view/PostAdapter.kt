@@ -58,20 +58,19 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         val horizontalLayoutManagaer =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = horizontalLayoutManagaer
-        smallImageAdapter = context?.let { SmallImageAdapter(mutableListOf(), it) }
+        smallImageAdapter = context.let { SmallImageAdapter(mutableListOf(), it) }
         recyclerView.adapter = smallImageAdapter
         smallImageAdapter.update(data[position].images)
 
         holder.title.text = data[position].title
 
-        if(data[position].body != null) {
-            if(data[position].body?.isEmpty()!!)
+        if (data[position].body != null) {
+            if (data[position].body?.isEmpty()!!)
                 holder.body.visibility = View.GONE else
                 holder.body.visibility = View.VISIBLE
             holder.body.text = data[position].body
         } else holder.body.visibility = View.GONE
     }
-
 
     fun menuClick(holder: ViewHolder, position: Int) {
         holder.menu.setOnClickListener {
@@ -82,20 +81,17 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             } else {
                 pop.menu.get(0).title = context.getString(R.string.save)
             }
-
             pop.setOnMenuItemClickListener { item ->
 
                 when (item.itemId) {
                     R.id.itemSave -> {
                         if (!data[position].save!!) {
-
                             var item = data[position]
                             item.save = true
                             Repo.insertData(context, item)
                             pop.menu.get(0).title = context.getString(R.string.save)
 
                         } else {
-
                             var item = data[position]
                             item.save = false
                             Repo.insertData(context, item)
@@ -119,7 +115,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         val body: TextView
         val image: ImageView
         val menu: ImageView
-        val rv:RecyclerView
+        val rv: RecyclerView
         override fun onClick(view: View) {}
 
         init {
