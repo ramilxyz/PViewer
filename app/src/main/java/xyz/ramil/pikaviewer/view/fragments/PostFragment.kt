@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import xyz.ramil.pikaviewer.R
-import xyz.ramil.pikaviewer.data.PostRepo
+import xyz.ramil.pikaviewer.database.Repo
 import xyz.ramil.pikaviewer.data.Status
 import xyz.ramil.pikaviewer.model.PostModel
 import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
@@ -70,7 +70,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     fun observerRvData() {
-        PostRepo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
+        Repo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
             postAdapter?.update(data, view)
 
         })
@@ -109,7 +109,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
 
         usersList?.forEach {
-            PostRepo.insertData(context!!, it)
+            Repo.insertData(context!!, it)
         }
 
 

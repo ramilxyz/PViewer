@@ -1,14 +1,13 @@
-package xyz.ramil.pikaviewer.data
+package xyz.ramil.pikaviewer.database
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import xyz.ramil.pikaviewer.database.DataBase
 import xyz.ramil.pikaviewer.model.PostModel
 
-class PostRepo {
+class Repo {
     companion object {
 
         var postDataBase: DataBase? = null
