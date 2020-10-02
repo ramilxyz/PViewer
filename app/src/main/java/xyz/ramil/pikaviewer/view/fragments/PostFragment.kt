@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.model.PostModel
@@ -51,12 +52,13 @@ class PostFragment(postModel: PostModel) : Fragment() {
 
         recyclerView = view!!.findViewById(R.id.rvPost)
         recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = WrapContentGridLayoutManager(activity, 1)
+        val verticalLinearLayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView?.layoutManager = verticalLinearLayoutManager
         setupRecyclerView()
     }
 
     fun setupRecyclerView() {
-        (recyclerView?.layoutManager as WrapContentGridLayoutManager).spanCount = 1
         postAdapter = context?.let { ImageAdapter(mutableListOf(), it) }
         recyclerView?.adapter = postAdapter
         postAdapter?.update(postModel?.images)

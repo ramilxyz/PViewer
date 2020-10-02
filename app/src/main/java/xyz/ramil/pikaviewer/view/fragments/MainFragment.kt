@@ -1,6 +1,7 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,6 +60,19 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         (recyclerView?.layoutManager as WrapContentGridLayoutManager).spanCount = 1
         postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) }
         recyclerView?.adapter = postAdapter
+
+
+        postAdapter?.setOnItemClickListener(object : PostAdapter.OnItemClickListener {
+            override fun OnItemClick(postModel: PostModel) {
+                val fragment = PostFragment(postModel)
+
+                getActivity()?.getSupportFragmentManager()?.beginTransaction()?.replace(R.id.root, fragment, "PostFragment"+postModel)?.addToBackStack(null)?.commit();
+
+            }
+        });
+
+
+
         observerRvData()
     }
 

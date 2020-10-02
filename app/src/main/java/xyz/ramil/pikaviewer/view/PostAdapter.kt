@@ -1,12 +1,14 @@
 package xyz.ramil.pikaviewer.view
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
+import androidx.cardview.widget.CardView
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +21,18 @@ import xyz.ramil.pikaviewer.model.PostModel
 
 class PostAdapter(private var data: List<PostModel>, private val context: Context, view: View?) :
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+
+    interface OnItemClickListener {
+        fun OnItemClick(postModel: PostModel)
+    }
+
+    private var mOnItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener?) {
+        mOnItemClickListener = onItemClickListener
+    }
+
+
     fun update(data: List<PostModel>, view: View?) {
         this.data = data
         notifyDataSetChanged()
@@ -30,6 +44,19 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+
+        if (mOnItemClickListener != null) {
+            holder.cvPost.setOnClickListener(View.OnClickListener {
+                mOnItemClickListener?.OnItemClick(
+                    data[position]
+                )
+                Log.d("CCCCCCCCCCCC", "CCCCCCC")
+            })
+        }
+
+
+
         if (data[position].images != null && !data[position].images?.isEmpty()!!) {
             holder.image.visibility = View.VISIBLE
             val url = data[position].images?.get(0)!!
@@ -120,6 +147,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         val image: ImageView
         val menu: ImageView
         val rv: RecyclerView
+        val cvPost: CardView
         override fun onClick(view: View) {}
 
         init {
@@ -129,6 +157,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             image = view.findViewById(R.id.ivPicture)
             menu = view.findViewById(R.id.ivMenu)
             rv = view.findViewById(R.id.rvSmall)
+            cvPost = view.findViewById(R.id.cvPost)
         }
     }
 }
