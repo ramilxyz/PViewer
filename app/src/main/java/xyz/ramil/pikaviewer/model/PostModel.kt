@@ -11,7 +11,8 @@ data class PostModel(
     var title: String?,
     var body: String?,
     @TypeConverters
-    val images: List<String?>?
+    val images: List<String?>?,
+    var save: Boolean? = false
 )
 
 
