@@ -12,12 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import xyz.ramil.pikaviewer.R
-import xyz.ramil.pikaviewer.database.Repo
 import xyz.ramil.pikaviewer.data.Status
+import xyz.ramil.pikaviewer.database.Repo
 import xyz.ramil.pikaviewer.model.PostModel
+import xyz.ramil.pikaviewer.view.PostAdapter
 import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
 import xyz.ramil.pikaviewer.viewmodel.PViewerViewModel
-import xyz.ramil.pikaviewer.view.PostAdapter
 
 class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -46,8 +46,6 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         pViewerViewModel?.getPost(1)
 
 
-
-
     }
 
     fun initView() {
@@ -55,15 +53,15 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         swiper?.setOnRefreshListener(this)
         recyclerView = view!!.findViewById(R.id.rv)
         recyclerView?.setHasFixedSize(true)
-        recyclerView?.setLayoutManager(WrapContentGridLayoutManager(activity, 1))
+        recyclerView?.layoutManager = WrapContentGridLayoutManager(activity, 1)
         contentLayout = view!!.findViewById<FrameLayout>(R.id.rootView)
 
         setupRecyclerView()
     }
 
     fun setupRecyclerView() {
-        (recyclerView?.getLayoutManager() as WrapContentGridLayoutManager).setSpanCount(1)
-        postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) };
+        (recyclerView?.layoutManager as WrapContentGridLayoutManager).spanCount = 1
+        postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) }
         recyclerView?.adapter = postAdapter
         observerRvData()
 
@@ -116,8 +114,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         swiper?.isRefreshing = false
 
 
-     //postAdapter?.update(usersList as List<PostModel>, view)
-
+        //postAdapter?.update(usersList as List<PostModel>, view)
 
 
     }

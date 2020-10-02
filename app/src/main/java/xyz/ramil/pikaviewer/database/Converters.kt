@@ -3,7 +3,7 @@ package xyz.ramil.pikaviewer.database
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.util.ArrayList
+import java.util.*
 
 object Converters {
     @JvmStatic

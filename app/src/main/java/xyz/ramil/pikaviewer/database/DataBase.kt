@@ -25,7 +25,8 @@ abstract class DataBase : RoomDatabase() {
 
             synchronized(this) {
 
-                INSTANCE = Room.databaseBuilder(context, DataBase::class.java, "pikaviewer").fallbackToDestructiveMigration().build()
+                INSTANCE = Room.databaseBuilder(context, DataBase::class.java, "pikaviewer")
+                    .fallbackToDestructiveMigration().build()
 
                 return INSTANCE
 

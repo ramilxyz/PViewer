@@ -14,7 +14,7 @@ class Repo {
 
         var data: LiveData<List<PostModel>>? = null
 
-        fun initializeDB(context: Context) : DataBase {
+        fun initializeDB(context: Context): DataBase {
             return DataBase.getDataseClient(context)
         }
 
@@ -28,7 +28,7 @@ class Repo {
             }
         }
 
-        fun getData(context: Context) : LiveData<List<PostModel>>? {
+        fun getData(context: Context): LiveData<List<PostModel>>? {
 
             postDataBase = initializeDB(context)
 

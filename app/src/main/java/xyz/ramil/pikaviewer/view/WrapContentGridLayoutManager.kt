@@ -14,17 +14,15 @@ class WrapContentGridLayoutManager : GridLayoutManager {
         attrs: AttributeSet?,
         defStyleAttr: Int,
         defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-    }
+    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    constructor(context: Context?, spanCount: Int) : super(context, spanCount) {}
+    constructor(context: Context?, spanCount: Int) : super(context, spanCount)
     constructor(
         context: Context?,
         spanCount: Int,
         orientation: Int,
         reverseLayout: Boolean
-    ) : super(context, spanCount, orientation, reverseLayout) {
-    }
+    ) : super(context, spanCount, orientation, reverseLayout)
 
     @SuppressLint("LongLogTag")
     override fun onLayoutChildren(recycler: Recycler, state: RecyclerView.State) {

@@ -1,7 +1,6 @@
 package xyz.ramil.pikaviewer.model
 
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 
