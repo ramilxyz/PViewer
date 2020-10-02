@@ -31,7 +31,6 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
         var smallImageAdapter: SmallImageAdapter? = null
         var recyclerView: RecyclerView? = null
 
@@ -41,18 +40,18 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         val horizontalLayoutManagaer =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = horizontalLayoutManagaer
-
         smallImageAdapter = context?.let { SmallImageAdapter(mutableListOf(), it) }
-
         recyclerView.adapter = smallImageAdapter
-
         smallImageAdapter.update(data[position].images)
 
-
-
-
         holder.title.text = data[position].title
-        holder.body.text = data[position].body
+
+        if(data[position].body != null) {
+            holder.body.visibility = View.VISIBLE
+            holder.body.text = data[position].body
+        } else holder.body.visibility = View.GONE
+
+
         if (data[position].images != null && !data[position].images?.isEmpty()!!) {
             holder.image.visibility = View.VISIBLE
             val url = data[position].images?.get(0)!!
