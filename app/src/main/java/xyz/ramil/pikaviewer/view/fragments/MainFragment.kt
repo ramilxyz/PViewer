@@ -92,15 +92,15 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         val usersList: MutableList<PostModel>? = data as MutableList<PostModel>?
         usersList?.shuffle()
         usersList?.forEach {
-            if(it.save == null) {
+            if (it.save == null) {
                 it.save = false
             }
 
             val post = Repo.getPost(context!!, it.id!!)
 
-            if(post == null)
+            if (post == null)
                 Repo.insertData(context!!, it)
-           else if (!post.save!!) {
+            else if (!post.save!!) {
                 it.save = false
                 Repo.insertData(context!!, it)
             }

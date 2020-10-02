@@ -44,8 +44,20 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             holder.image.visibility = View.GONE
         }
 
+        if (data[position].body != null) {
+            if (data[position].body?.isEmpty()!!)
+                holder.body.visibility = View.GONE else
+                holder.body.visibility = View.VISIBLE
+            holder.body.text = data[position].body
+        } else holder.body.visibility = View.GONE
+
+        holder.title.text = data[position].title
+
         menuClick(holder, position)
-        smallImageRvInit(holder, position)
+        if(data[position].images != null)
+            if (data[position].images?.size!! > 1)
+                smallImageRvInit(holder, position)
+
     }
 
     fun smallImageRvInit(holder: ViewHolder, position: Int) {
@@ -62,14 +74,8 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         recyclerView.adapter = smallImageAdapter
         smallImageAdapter.update(data[position].images)
 
-        holder.title.text = data[position].title
 
-        if (data[position].body != null) {
-            if (data[position].body?.isEmpty()!!)
-                holder.body.visibility = View.GONE else
-                holder.body.visibility = View.VISIBLE
-            holder.body.text = data[position].body
-        } else holder.body.visibility = View.GONE
+
     }
 
     fun menuClick(holder: ViewHolder, position: Int) {
