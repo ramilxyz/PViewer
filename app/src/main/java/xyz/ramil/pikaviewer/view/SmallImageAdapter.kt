@@ -31,7 +31,6 @@ class SmallImageAdapter(private var data: List<String?>?, private val context: C
                     .error(R.drawable.ic_launcher_background)
             )
             .into(holder.image)
-
     }
 
     override fun getItemCount(): Int {
@@ -41,13 +40,9 @@ class SmallImageAdapter(private var data: List<String?>?, private val context: C
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val image: ImageView
         override fun onClick(view: View) {}
-
         init {
             view.setOnClickListener(this)
             image = view.findViewById(R.id.ivSmallPicture)
-
         }
     }
-
-
 }

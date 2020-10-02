@@ -30,7 +30,25 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (data[position].images != null && !data[position].images?.isEmpty()!!) {
+            holder.image.visibility = View.VISIBLE
+            val url = data[position].images?.get(0)!!
+            Glide.with(context)
+                .load(url)
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_background)
+                )
+                .into(holder.image)
+        } else {
+            holder.image.visibility = View.GONE
+        }
 
+        menuClick(holder, position)
+        smallImageRvInit(holder, position)
+    }
+
+    fun smallImageRvInit(holder: ViewHolder, position: Int) {
         var smallImageAdapter: SmallImageAdapter? = null
         var recyclerView: RecyclerView? = null
 
@@ -49,36 +67,16 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         if(data[position].body != null) {
             if(data[position].body?.isEmpty()!!)
                 holder.body.visibility = View.GONE else
-            holder.body.visibility = View.VISIBLE
+                holder.body.visibility = View.VISIBLE
             holder.body.text = data[position].body
         } else holder.body.visibility = View.GONE
+    }
 
 
-
-
-
-
-
-
-        if (data[position].images != null && !data[position].images?.isEmpty()!!) {
-            holder.image.visibility = View.VISIBLE
-            val url = data[position].images?.get(0)!!
-            Glide.with(context)
-                .load(url)
-                .apply(
-                    RequestOptions.placeholderOf(R.drawable.ic_launcher_background)
-                        .error(R.drawable.ic_launcher_background)
-                )
-                .into(holder.image)
-        } else {
-            holder.image.visibility = View.GONE
-        }
-
+    fun menuClick(holder: ViewHolder, position: Int) {
         holder.menu.setOnClickListener {
-
             val pop = PopupMenu(context, it)
             pop.inflate(R.menu.popup_post)
-
             if (data[position].save!!) {
                 pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
             } else {
