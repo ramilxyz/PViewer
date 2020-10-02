@@ -35,9 +35,10 @@ public class BaseFragment extends Fragment {
         view.findViewById(R.id.swiper).setEnabled(false);
 
         PostFragment postFeed = new PostFragment();
+        postFeed.setIsSaveScreen(false);
         adapter.addFrag(postFeed, getString(R.string.postfeed));
-
         PostFragment savedPosts = new PostFragment();
+        savedPosts.setIsSaveScreen(true);
         adapter.addFrag(savedPosts, getString(R.string.savedposts));
 
         viewPager.setAdapter(adapter);

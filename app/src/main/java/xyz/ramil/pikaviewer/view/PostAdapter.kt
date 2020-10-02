@@ -50,7 +50,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             val pop= PopupMenu(context,it)
             pop.inflate(R.menu.popup_post)
 
-            if(data[position].save != null && !data[position].save!!) {
+            if(data[position].save!!) {
                 pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
             } else {
                 pop.menu.get(0).title = context.getString(R.string.save)
@@ -61,19 +61,19 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
                 when(item.itemId) {
                  R.id.itemSave ->
                  {
-                     if(data[position].save != null && !data[position].save!!) {
-                         pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
+                     if(!data[position].save!!) {
+
                          var item = data[position]
                          item.save = true
                          Repo.insertData(context, item)
-                         pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
+                         pop.menu.get(0).title = context.getString(R.string.save)
 
                      } else {
-                         pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
+
                          var item = data[position]
                          item.save = false
                          Repo.insertData(context, item)
-                         pop.menu.get(0).title = context.getString(R.string.save)
+                         pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
                      }
                  }
                 }
@@ -82,9 +82,6 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             pop.show()
             true
         }
-
-
-
     }
 
     override fun getItemCount(): Int {

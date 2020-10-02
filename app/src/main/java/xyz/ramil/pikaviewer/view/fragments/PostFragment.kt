@@ -1,6 +1,7 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     var recyclerView: RecyclerView? = null
     var contentLayout: FrameLayout? = null
     var postAdapter: PostAdapter? = null
+    var isSave: Boolean = false
 
 
     override fun onCreateView(
@@ -41,11 +43,7 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         initView()
         pViewerViewModel = ViewModelProvider(this).get(PViewerViewModel::class.java)
         observeGetPosts()
-        observeGetPosts2()
         pViewerViewModel?.getFeed()
-        pViewerViewModel?.getPost(1)
-
-
     }
 
     fun initView() {
@@ -69,7 +67,18 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     fun observerRvData() {
         Repo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
-            postAdapter?.update(data, view)
+            if(isSave!!) {
+
+
+                data.forEach {
+                    Log.d("HHHHHHHHHH", ""+it.save)
+                }
+
+                var a = data.filter { it.save == true }
+                postAdapter?.update(a, view)
+            } else {
+               postAdapter?.update(data, view)
+            }
 
         })
     }
@@ -77,64 +86,28 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private fun observeGetPosts() {
         pViewerViewModel?.feedLiveData?.observe(viewLifecycleOwner, Observer {
             when (it.status) {
-                Status.LOADING -> viewOneLoading()
-                Status.SUCCESS -> viewOneSuccess(it.data)
-                Status.ERROR -> viewOneError(it.error)
+                Status.LOADING -> loading()
+                Status.SUCCESS -> success(it.data)
+                Status.ERROR -> connectionError(it.error)
             }
         })
     }
 
-    private fun observeGetPosts2() {
-        pViewerViewModel?.postLiveData?.observe(viewLifecycleOwner, Observer {
-            when (it.status) {
-                Status.LOADING -> viewOneLoading2()
-                Status.SUCCESS -> viewOneSuccess2(it.data)
-                Status.ERROR -> viewOneError2(it.error)
-            }
-        })
-    }
-
-
-    private fun viewOneLoading() {
+    private fun loading() {
         swiper?.isRefreshing = true
     }
 
-    private fun viewOneSuccess(data: Any?) {
-
-
+    private fun success(data: Any?) {
         val usersList: MutableList<PostModel>? = data as MutableList<PostModel>?
         usersList?.shuffle()
-
-
         usersList?.forEach {
+            it.save = false
             Repo.insertData(context!!, it)
         }
-
-
         swiper?.isRefreshing = false
-
-
-        //postAdapter?.update(usersList as List<PostModel>, view)
-
-
     }
 
-    private fun viewOneError(error: Error?) {
-        swiper?.isRefreshing = false
-
-        Toast.makeText(context, "${error?.message}", Toast.LENGTH_SHORT).show()
-
-    }
-
-    private fun viewOneLoading2() {
-        swiper?.isRefreshing = true
-    }
-
-    private fun viewOneSuccess2(data: Any?) {
-
-    }
-
-    private fun viewOneError2(error: Error?) {
+    private fun connectionError(error: Error?) {
         swiper?.isRefreshing = false
         Toast.makeText(context, "${error?.message}", Toast.LENGTH_SHORT).show()
 
@@ -142,6 +115,10 @@ class PostFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onRefresh() {
         pViewerViewModel?.getFeed()
+    }
+
+    fun setIsSaveScreen(boolean: Boolean) {
+        isSave = boolean
     }
 
 }
