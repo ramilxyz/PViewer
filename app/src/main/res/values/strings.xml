@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">PikaViewer</string>
     <string name="postfeed">Post feed</string>
+
     <string name="savedposts">saved posts</string>
+    <string name="remove_from_saved">Remove from saved</string>
+
+    <string name="save">Save</string>
 </resources>

@@ -19,7 +19,6 @@ class NestedCoordinatorLayout @JvmOverloads constructor(
     private val mParentOffsetInWindow = IntArray(2)
     private val mParentScrollConsumed = IntArray(2)
 
-    // NestedScrollingChild
     override fun isNestedScrollingEnabled(): Boolean {
         return mNestedScrollingChildHelper.isNestedScrollingEnabled
     }

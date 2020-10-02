@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -40,6 +41,31 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         } else {
             holder.image.visibility = View.GONE
         }
+
+        holder.menu.setOnClickListener {
+
+            val pop= PopupMenu(context,it)
+            pop.inflate(R.menu.popup_post)
+
+            pop.setOnMenuItemClickListener {item->
+
+                when(item.itemId)
+
+                {
+//                    R.id.delete->{ }
+//
+//                    R.id.cancel->{ }
+
+
+                }
+                true
+            }
+            pop.show()
+            true
+        }
+
+
+
     }
 
     override fun getItemCount(): Int {
@@ -50,6 +76,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         val title: TextView
         val body: TextView
         val image: ImageView
+        val menu: ImageView
         override fun onClick(view: View) {}
 
         init {
@@ -57,6 +84,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             title = view.findViewById(R.id.tvPostTitle)
             body = view.findViewById(R.id.tvPostBody)
             image = view.findViewById(R.id.ivPicture)
+            menu = view.findViewById(R.id.ivMenu)
         }
     }
 }
