@@ -78,7 +78,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         holder.title.text = data[position].title
 
         menuClick(holder, position)
-        if(data[position].images != null)
+        if (data[position].images != null)
             if (data[position].images?.size!! > 1)
                 smallImageRvInit(holder, position)
 

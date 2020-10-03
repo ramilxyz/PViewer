@@ -2,7 +2,6 @@ package xyz.ramil.pikaviewer.view.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import xyz.ramil.pikaviewer.R
 
 class MainActivity : AppCompatActivity() {
@@ -11,9 +10,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportFragmentManager.addOnBackStackChangedListener {
             if (supportFragmentManager.backStackEntryCount > 0) {
-                getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
             } else {
-                getSupportActionBar()?.setDisplayHomeAsUpEnabled(false)
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
             }
         }

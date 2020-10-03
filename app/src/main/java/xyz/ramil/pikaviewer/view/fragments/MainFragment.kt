@@ -63,11 +63,13 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         postAdapter?.setOnItemClickListener(object : PostAdapter.OnItemClickListener {
             override fun OnItemClick(postModel: PostModel) {
-              val fragment = PostFragment(postModel)
-                getActivity()?.getSupportFragmentManager()?.beginTransaction()?.replace(R.id.rootView, fragment, "PostFragment"+postModel)?.addToBackStack(null)?.commit();
+                val fragment = PostFragment(postModel)
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.rootView, fragment, "PostFragment" + postModel)
+                    ?.addToBackStack(null)?.commit()
 
             }
-        });
+        })
 
 
 
@@ -122,8 +124,8 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun connectionError(error: Error?) {
         swiper?.isRefreshing = false
-        if(error?.message != null)
-        Toast.makeText(context, "${error?.message}", Toast.LENGTH_SHORT).show() else
+        if (error?.message != null)
+            Toast.makeText(context, "${error.message}", Toast.LENGTH_SHORT).show() else
             Toast.makeText(context, getString(R.string.error), Toast.LENGTH_SHORT).show()
     }
 

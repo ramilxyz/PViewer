@@ -21,7 +21,8 @@ class FeedImageAdapter(private var data: List<String?>?, private val context: Co
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val rowItem =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_feed_small_image, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_feed_small_image, parent, false)
         return ViewHolder(rowItem)
     }
 

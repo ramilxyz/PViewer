@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.model.PostModel
-import xyz.ramil.pikaviewer.view.adapters.FeedImageAdapter
 import xyz.ramil.pikaviewer.view.adapters.PostImageAdapter
 
 class PostFragment(postModel: PostModel) : Fragment() {
