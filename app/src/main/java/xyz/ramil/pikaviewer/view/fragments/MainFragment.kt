@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.textview.MaterialTextView
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.data.Status
 import xyz.ramil.pikaviewer.database.Repo
@@ -23,10 +24,18 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private var mainViewModel: MainViewModel? = null
     var swiper: SwipeRefreshLayout? = null
+    var tvNotSavedPosts: MaterialTextView? = null
     var recyclerView: RecyclerView? = null
     var contentLayout: FrameLayout? = null
     var postAdapter: PostAdapter? = null
     var isSave: Boolean = false
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        observeGetPosts()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,8 +48,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        observeGetPosts()
+
         mainViewModel?.getFeed()
     }
 
@@ -51,6 +59,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager = WrapContentGridLayoutManager(activity, 1)
         contentLayout = view!!.findViewById<FrameLayout>(R.id.rootView)
+        tvNotSavedPosts = view!!.findViewById(R.id.tvNotSavedPosts)
 
         setupRecyclerView()
     }
@@ -80,6 +89,12 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         Repo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
             if (isSave) {
                 val a = data.filter { it.save == true }
+
+                if(a.isEmpty())
+                    tvNotSavedPosts?.visibility = View.VISIBLE
+                 else
+                    tvNotSavedPosts?.visibility = View.GONE
+
                 postAdapter?.update(a, view)
             } else {
                 postAdapter?.update(data, view)

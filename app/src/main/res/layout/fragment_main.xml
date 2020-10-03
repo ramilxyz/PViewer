@@ -35,8 +35,10 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNotSavedPosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="@string/not_saves"
             android:layout_gravity="center"
             android:gravity="center"
