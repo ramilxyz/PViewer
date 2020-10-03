@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import xyz.ramil.pikaviewer.R
-import xyz.ramil.pikaviewer.database.Repo
+import xyz.ramil.pikaviewer.database.DataBaseManager
 import xyz.ramil.pikaviewer.model.PostModel
 
 
@@ -134,13 +134,13 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
                         if (!data[position].save!!) {
                             var item = data[position]
                             item.save = true
-                            Repo.insertData(context, item)
+                            DataBaseManager.insertData(context, item)
                             pop.menu.get(0).title = context.getString(R.string.save)
 
                         } else {
                             var item = data[position]
                             item.save = false
-                            Repo.insertData(context, item)
+                            DataBaseManager.insertData(context, item)
                             pop.menu.get(0).title = context.getString(R.string.remove_from_saved)
                         }
                     }

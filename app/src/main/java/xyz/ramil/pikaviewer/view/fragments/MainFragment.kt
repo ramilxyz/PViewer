@@ -15,7 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.textview.MaterialTextView
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.data.Status
-import xyz.ramil.pikaviewer.database.Repo
+import xyz.ramil.pikaviewer.database.DataBaseManager
 import xyz.ramil.pikaviewer.model.PostModel
 import xyz.ramil.pikaviewer.view.adapters.PostAdapter
 import xyz.ramil.pikaviewer.view.customview.WrapContentGridLayoutManager
@@ -77,17 +77,14 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.add(R.id.rootView, fragment, "PostFragment" + postModel)
                     ?.addToBackStack(null)?.commit()
-
             }
         })
-
-
 
         observerRvData()
     }
 
     fun observerRvData() {
-        Repo.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
+        DataBaseManager.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
             if (isSave) {
                 val a = data.filter { it.save == true }
 
@@ -126,13 +123,13 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 it.save = false
             }
 
-            val post = Repo.getPost(context!!, it.id!!)
+            val post = DataBaseManager.getPost(context!!, it.id!!)
 
             if (post == null)
-                Repo.insertData(context!!, it)
+                DataBaseManager.insertData(context!!, it)
             else if (!post.save!!) {
                 it.save = false
-                Repo.insertData(context!!, it)
+                DataBaseManager.insertData(context!!, it)
             }
         }
         swiper?.isRefreshing = false

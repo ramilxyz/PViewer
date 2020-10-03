@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import xyz.ramil.pikaviewer.model.PostModel
 
-class Repo {
+class DataBaseManager {
     companion object {
 
         var postDataBase: DataBase? = null
@@ -39,6 +39,5 @@ class Repo {
 
             return post
         }
-
     }
 }

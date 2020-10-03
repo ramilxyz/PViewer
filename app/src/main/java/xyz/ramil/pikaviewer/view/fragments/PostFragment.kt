@@ -1,7 +1,6 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -14,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import xyz.ramil.pikaviewer.R
-import xyz.ramil.pikaviewer.database.Repo
+import xyz.ramil.pikaviewer.database.DataBaseManager
 import xyz.ramil.pikaviewer.model.PostModel
 import xyz.ramil.pikaviewer.view.adapters.PostImageAdapter
 
@@ -97,13 +96,13 @@ class PostFragment(postModel: PostModel) : Fragment() {
                         if (!postModel!!.save!!) {
                             var item = postModel
                             item?.save = true
-                            Repo.insertData(context!!, item!!)
+                            DataBaseManager.insertData(context!!, item!!)
                             pop.menu.get(0).title = context?.getString(R.string.save)
 
                         } else {
                             var item = postModel
                             item?.save = false
-                            Repo.insertData(context!!, item!!)
+                            DataBaseManager.insertData(context!!, item!!)
                             pop.menu.get(0).title = context?.getString(R.string.remove_from_saved)
                         }
                     }
