@@ -10,5 +10,5 @@
 
     <string name="error"> Ошибка соеднинения! </string>
 
-    <string name="hello">Привет! Будущие коллеги:D</string>
+    <string name="not_saves">У вас на данный момент нет сохраненных постов...</string>
 </resources>

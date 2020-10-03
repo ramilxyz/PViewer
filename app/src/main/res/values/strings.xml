@@ -9,7 +9,5 @@
 
     <string name="error"> Connection error!</string>
 
-    <string name="hello">Hello future colleagues!</string>
-
-
+    <string name="not_saves">You have no saved posts at the moment...</string>
 </resources>
