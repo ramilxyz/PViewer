@@ -75,7 +75,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             override fun OnItemClick(postModel: PostModel) {
                 val fragment = PostFragment(postModel)
                 activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.rootView, fragment, "PostFragment" + postModel)
+                    ?.add(R.id.rootView, fragment, "PostFragment" + postModel)
                     ?.addToBackStack(null)?.commit()
 
             }
