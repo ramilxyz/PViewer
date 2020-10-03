@@ -28,7 +28,8 @@ class PostImageAdapter(private var data: List<String?>?, private val context: Co
         Glide.with(context)
             .load(data?.get(position))
             .apply(
-                RequestOptions.placeholderOf(R.drawable.ic_launcher_background)
+                RequestOptions
+                    .placeholderOf(R.drawable.emty)
                     .error(R.drawable.ic_launcher_background)
             )
             .into(holder.image)
