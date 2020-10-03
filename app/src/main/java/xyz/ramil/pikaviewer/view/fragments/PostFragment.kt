@@ -19,7 +19,6 @@ class PostFragment(postModel: PostModel) : Fragment() {
     var postAdapterFeed: PostImageAdapter? = null
     var title: TextView? = null
     var body: TextView? = null
-    var image: ImageView? = null
     var menu: ImageView? = null
     var postModel: PostModel? = null
 
@@ -38,7 +37,6 @@ class PostFragment(postModel: PostModel) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
     }
 
     fun initView() {
@@ -63,7 +61,4 @@ class PostFragment(postModel: PostModel) : Fragment() {
         recyclerView?.adapter = postAdapterFeed
         postAdapterFeed?.update(postModel?.images)
     }
-
-
-
 }

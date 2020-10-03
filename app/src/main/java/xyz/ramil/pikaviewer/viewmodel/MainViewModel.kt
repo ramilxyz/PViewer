@@ -20,5 +20,4 @@ class MainViewModel : BaseViewModel() {
             api.getFeed()
         }
     }
-
 }
