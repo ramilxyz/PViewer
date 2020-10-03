@@ -86,9 +86,9 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             if (isSave) {
                 val filterData = data.filter { it.save == true }
 
-                if(filterData.isEmpty())
+                if (filterData.isEmpty())
                     tvNotSavedPosts?.visibility = View.VISIBLE
-                 else
+                else
                     tvNotSavedPosts?.visibility = View.GONE
 
                 postAdapter?.update(filterData, view)

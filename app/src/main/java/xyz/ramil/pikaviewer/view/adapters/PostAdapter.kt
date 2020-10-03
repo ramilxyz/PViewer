@@ -79,7 +79,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         if (data[position].images != null) {
             if (data[position].images?.size!! > 1)
                 smallImageRvInit(holder, position)
-            if(data[position].images?.size!! <= 1) {
+            if (data[position].images?.size!! <= 1) {
                 holder.rv.visibility = View.GONE
             } else {
                 holder.rv.visibility = View.VISIBLE
@@ -103,7 +103,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
 
         imageList.addAll(data[position].images as MutableList<String>)
         imageList.removeAt(0)
-            //TODO пост может сожержать много изображений, для проверки работы с таким постом
+        //TODO пост может сожержать много изображений, для проверки работы с таким постом
 //        imageList.add("https://i.stack.imgur.com/9TELO.png")
 //        imageList.add("https://i.stack.imgur.com/9TELO.png")
 //        imageList.add("https://i.stack.imgur.com/9TELO.png")
