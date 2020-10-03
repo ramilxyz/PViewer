@@ -75,6 +75,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             override fun OnItemClick(postModel: PostModel) {
                 val fragment = PostFragment(postModel)
                 activity?.supportFragmentManager?.beginTransaction()
+                    ?.setCustomAnimations(R.anim.enter_from_left, R.anim.enter_from_right, R.anim.enter_from_left, R.anim.exit_to_right)
                     ?.add(R.id.rootView, fragment, "PostFragment" + postModel)
                     ?.addToBackStack(null)?.commit()
             }
@@ -86,14 +87,14 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     fun observerRvData() {
         DataBaseManager.getData(context!!)?.observe(viewLifecycleOwner, Observer { data ->
             if (isSave) {
-                val a = data.filter { it.save == true }
+                val filterData = data.filter { it.save == true }
 
-                if(a.isEmpty())
+                if(filterData.isEmpty())
                     tvNotSavedPosts?.visibility = View.VISIBLE
                  else
                     tvNotSavedPosts?.visibility = View.GONE
 
-                postAdapter?.update(a, view)
+                postAdapter?.update(filterData, view)
             } else {
                 postAdapter?.update(data, view)
             }
