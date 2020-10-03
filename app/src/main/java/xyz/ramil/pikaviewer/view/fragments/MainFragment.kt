@@ -1,5 +1,6 @@
 package xyz.ramil.pikaviewer.view.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,11 +39,17 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainViewModel = ViewModelProvider(activity!!).get(MainViewModel::class.java)
+        observeGetPosts()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        observeGetPosts()
+
+
         mainViewModel?.getFeed()
     }
 
@@ -98,7 +105,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun observeGetPosts() {
-        mainViewModel?.feedLiveData?.observe(viewLifecycleOwner, Observer {
+        mainViewModel?.feedLiveData?.observe(activity!!, Observer {
             when (it.status) {
                 Status.LOADING -> loading()
                 Status.SUCCESS -> success(it.data)
