@@ -1,6 +1,7 @@
 package xyz.ramil.pikaviewer.view.activities
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import xyz.ramil.pikaviewer.R
 

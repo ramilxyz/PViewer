@@ -77,16 +77,21 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
 
         holder.title.text = data[position].title
 
-        menuClick(holder, position)
+
         if (data[position].images != null)
             if (data[position].images?.size!! > 1)
                 smallImageRvInit(holder, position)
+
+        menuClick(holder, position)
+
+
 
     }
 
     fun smallImageRvInit(holder: ViewHolder, position: Int) {
         var feedImageAdapter: FeedImageAdapter? = null
         var recyclerView: RecyclerView? = null
+        holder.rv.visibility = View.VISIBLE
         recyclerView = holder.rv
         recyclerView.setHasFixedSize(true)
         val horizontalLayoutManagaer =
@@ -94,9 +99,23 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
         recyclerView.layoutManager = horizontalLayoutManagaer
         feedImageAdapter = context.let { FeedImageAdapter(mutableListOf(), it) }
         recyclerView.adapter = feedImageAdapter
-        var images = data[position].images as MutableList<String>
-        images.removeAt(0)
-        feedImageAdapter.update(images)
+
+        val imageList: MutableList<String> = mutableListOf()
+
+        imageList.addAll(data[position].images as MutableList<String>)
+        imageList.removeAt(0)
+            //TODO пост может сожержать много изображений, для проверки работы с таким постом
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+        feedImageAdapter.update(imageList)
     }
 
     fun menuClick(holder: ViewHolder, position: Int) {

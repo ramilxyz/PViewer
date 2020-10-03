@@ -9,4 +9,6 @@
     <string name="save">Сохранить</string>
 
     <string name="error"> Ошибка соеднинения! </string>
+
+    <string name="hello">Привет! Будущие коллеги:D</string>
 </resources>
