@@ -32,7 +32,7 @@
             android:theme="@style/AppTheme">
         </activity>
 
-        <receiver android:name=".receivers.NetworkChangeReceiver">
+        <receiver android:name="xyz.ramil.pikaviewer.data.network.NetworkChangeReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
