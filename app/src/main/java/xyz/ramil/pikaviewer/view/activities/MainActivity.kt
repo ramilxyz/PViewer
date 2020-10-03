@@ -5,6 +5,7 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.data.network.NetworkChangeReceiver
 
@@ -15,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //TODO ТЕМНАЯ ТЕМА
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        //TODO СВЕТЛАЯ ТЕМА
+      //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         supportFragmentManager.addOnBackStackChangedListener {
             if (supportFragmentManager.backStackEntryCount > 0) {
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -34,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
         registerNetworkBroadcastForNougat()
+
     }
 
     private fun registerNetworkBroadcastForNougat() {

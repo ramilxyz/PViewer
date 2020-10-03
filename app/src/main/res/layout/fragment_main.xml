@@ -5,7 +5,6 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <xyz.ramil.pikaviewer.view.customview.NestedCoordinatorLayout
@@ -29,7 +28,6 @@
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorWhite"
                 android:descendantFocusability="blocksDescendants"
                 app:spanCount="3"
                 tools:listitem="@layout/item_feed" />
