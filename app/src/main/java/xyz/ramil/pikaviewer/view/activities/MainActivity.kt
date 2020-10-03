@@ -16,11 +16,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         //TODO ТЕМНАЯ ТЕМА
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+      //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         //TODO СВЕТЛАЯ ТЕМА
-      //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         supportFragmentManager.addOnBackStackChangedListener {
             if (supportFragmentManager.backStackEntryCount > 0) {
@@ -49,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             mNetworkReceiver,
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
-
     }
 
     protected fun unregisterNetworkChanges() {
