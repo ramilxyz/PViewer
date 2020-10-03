@@ -53,7 +53,6 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
             })
         }
 
-
         if (data[position].images != null && !data[position].images?.isEmpty()!!) {
             holder.image.visibility = View.VISIBLE
             val url = data[position].images?.get(0)!!

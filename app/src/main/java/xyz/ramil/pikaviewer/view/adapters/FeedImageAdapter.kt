@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import xyz.ramil.pikaviewer.R
 
-
 class FeedImageAdapter(private var data: List<String?>?, private val context: Context) :
     RecyclerView.Adapter<FeedImageAdapter.ViewHolder>() {
 

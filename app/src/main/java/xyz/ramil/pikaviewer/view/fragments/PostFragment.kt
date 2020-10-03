@@ -71,11 +71,11 @@ class PostFragment(postModel: PostModel) : Fragment() {
         imageList.addAll(postModel?.images as MutableList<String>)
 
             //TODO еслсли пост имеет много изображений
-        imageList.add("https://i.stack.imgur.com/9TELO.png")
-        imageList.add("https://i.stack.imgur.com/9TELO.png")
-        imageList.add("https://i.stack.imgur.com/9TELO.png")
-        imageList.add("https://i.stack.imgur.com/9TELO.png")
-        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
+//        imageList.add("https://i.stack.imgur.com/9TELO.png")
 
         postAdapterFeed?.update(imageList)
     }
@@ -114,7 +114,6 @@ class PostFragment(postModel: PostModel) : Fragment() {
         }
     }
 
-
 override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.getItemId()) {
         android.R.id.home -> {
@@ -124,9 +123,6 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
     }
     return super.onOptionsItemSelected(item)
 }
-
-
-
 }
 
 
