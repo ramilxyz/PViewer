@@ -30,13 +30,6 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     var postAdapter: PostAdapter? = null
     var isSave: Boolean = false
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        observeGetPosts()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,7 +41,8 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        observeGetPosts()
         mainViewModel?.getFeed()
     }
 
