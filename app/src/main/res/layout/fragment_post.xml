@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/colorGrayLight"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -58,7 +58,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite"
-                app:spanCount="3"
                 tools:listitem="@layout/item_post_image" />
 
         </FrameLayout>

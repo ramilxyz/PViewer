@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.model.PostModel
 import xyz.ramil.pikaviewer.view.adapters.FeedImageAdapter
+import xyz.ramil.pikaviewer.view.adapters.PostImageAdapter
 
 class PostFragment(postModel: PostModel) : Fragment() {
     var recyclerView: RecyclerView? = null
-    var postAdapterFeed: FeedImageAdapter? = null
+    var postAdapterFeed: PostImageAdapter? = null
     var title: TextView? = null
     var body: TextView? = null
     var image: ImageView? = null
@@ -58,7 +59,7 @@ class PostFragment(postModel: PostModel) : Fragment() {
     }
 
     fun setupRecyclerView() {
-        postAdapterFeed = context?.let { FeedImageAdapter(mutableListOf(), it) }
+        postAdapterFeed = context?.let { PostImageAdapter(mutableListOf(), it) }
         recyclerView?.adapter = postAdapterFeed
         postAdapterFeed?.update(postModel?.images)
     }
