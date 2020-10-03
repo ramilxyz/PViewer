@@ -22,9 +22,9 @@ abstract class BaseViewModel : ViewModel() {
         this.viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = request.invoke()
-                if (response != null) {
-                    liveData.postValue(Event.success(response))
-                }
+
+                liveData.postValue(Event.success(response))
+
             } catch (e: Exception) {
                 e.printStackTrace()
                 liveData.postValue(Event.error(null))

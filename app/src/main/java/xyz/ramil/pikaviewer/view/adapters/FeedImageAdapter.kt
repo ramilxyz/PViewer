@@ -1,4 +1,4 @@
-package xyz.ramil.pikaviewer.view
+package xyz.ramil.pikaviewer.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import com.bumptech.glide.request.RequestOptions
 import xyz.ramil.pikaviewer.R
 
 
-class ImageAdapter(private var data: List<String?>?, private val context: Context) :
-    RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+class FeedImageAdapter(private var data: List<String?>?, private val context: Context) :
+    RecyclerView.Adapter<FeedImageAdapter.ViewHolder>() {
 
     fun update(data: List<String?>?) {
         this.data = data

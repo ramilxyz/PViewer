@@ -1,4 +1,4 @@
-package xyz.ramil.pikaviewer.view
+package xyz.ramil.pikaviewer.view.customview
 
 import android.annotation.SuppressLint
 import android.content.Context

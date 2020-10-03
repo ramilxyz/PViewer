@@ -1,7 +1,6 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +15,13 @@ import xyz.ramil.pikaviewer.R
 import xyz.ramil.pikaviewer.data.Status
 import xyz.ramil.pikaviewer.database.Repo
 import xyz.ramil.pikaviewer.model.PostModel
-import xyz.ramil.pikaviewer.view.PostAdapter
-import xyz.ramil.pikaviewer.view.WrapContentGridLayoutManager
-import xyz.ramil.pikaviewer.viewmodel.PViewerViewModel
+import xyz.ramil.pikaviewer.view.adapters.PostAdapter
+import xyz.ramil.pikaviewer.view.customview.WrapContentGridLayoutManager
+import xyz.ramil.pikaviewer.viewmodel.MainViewModel
 
 class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
-    private var pViewerViewModel: PViewerViewModel? = null
+    private var mainViewModel: MainViewModel? = null
     var swiper: SwipeRefreshLayout? = null
     var recyclerView: RecyclerView? = null
     var contentLayout: FrameLayout? = null
@@ -40,9 +39,9 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        pViewerViewModel = ViewModelProvider(this).get(PViewerViewModel::class.java)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         observeGetPosts()
-        pViewerViewModel?.getFeed()
+        mainViewModel?.getFeed()
     }
 
     fun initView() {
@@ -64,9 +63,8 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         postAdapter?.setOnItemClickListener(object : PostAdapter.OnItemClickListener {
             override fun OnItemClick(postModel: PostModel) {
-                val fragment = PostFragment(postModel)
-
-                getActivity()?.getSupportFragmentManager()?.beginTransaction()?.replace(R.id.root, fragment, "PostFragment"+postModel)?.addToBackStack(null)?.commit();
+              val fragment = PostFragment(postModel)
+                getActivity()?.getSupportFragmentManager()?.beginTransaction()?.replace(R.id.rootView, fragment, "PostFragment"+postModel)?.addToBackStack(null)?.commit();
 
             }
         });
@@ -89,7 +87,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun observeGetPosts() {
-        pViewerViewModel?.feedLiveData?.observe(viewLifecycleOwner, Observer {
+        mainViewModel?.feedLiveData?.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.LOADING -> loading()
                 Status.SUCCESS -> success(it.data)
@@ -130,7 +128,7 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
-        pViewerViewModel?.getFeed()
+        mainViewModel?.getFeed()
     }
 
     fun setIsSaveScreen(boolean: Boolean) {

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import xyz.ramil.pikaviewer.data.Event
 import xyz.ramil.pikaviewer.model.PostModel
 
-class PViewerViewModel : BaseViewModel() {
+class MainViewModel : BaseViewModel() {
 
     val feedLiveData = MutableLiveData<Event<List<PostModel>>>()
     val postLiveData = MutableLiveData<Event<PostModel>>()

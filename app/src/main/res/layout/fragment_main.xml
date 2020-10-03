@@ -8,7 +8,7 @@
     android:background="@color/colorWhite"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <xyz.ramil.pikaviewer.view.NestedCoordinatorLayout
+    <xyz.ramil.pikaviewer.view.customview.NestedCoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -34,6 +34,6 @@
                 app:spanCount="3"
                 tools:listitem="@layout/item_feed" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </xyz.ramil.pikaviewer.view.NestedCoordinatorLayout>
+    </xyz.ramil.pikaviewer.view.customview.NestedCoordinatorLayout>
 
 </FrameLayout>

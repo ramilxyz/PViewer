@@ -1,7 +1,6 @@
-package xyz.ramil.pikaviewer.view
+package xyz.ramil.pikaviewer.view.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,10 +50,8 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
                 mOnItemClickListener?.OnItemClick(
                     data[position]
                 )
-                Log.d("CCCCCCCCCCCC", "CCCCCCC")
             })
         }
-
 
 
         if (data[position].images != null && !data[position].images?.isEmpty()!!) {
@@ -88,19 +85,18 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
     }
 
     fun smallImageRvInit(holder: ViewHolder, position: Int) {
-        var imageAdapter: ImageAdapter? = null
+        var feedImageAdapter: FeedImageAdapter? = null
         var recyclerView: RecyclerView? = null
         recyclerView = holder.rv
         recyclerView.setHasFixedSize(true)
-
         val horizontalLayoutManagaer =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = horizontalLayoutManagaer
-        imageAdapter = context.let { ImageAdapter(mutableListOf(), it) }
-        recyclerView.adapter = imageAdapter
+        feedImageAdapter = context.let { FeedImageAdapter(mutableListOf(), it) }
+        recyclerView.adapter = feedImageAdapter
         var images = data[position].images as MutableList<String>
         images.removeAt(0)
-        imageAdapter.update(images)
+        feedImageAdapter.update(images)
     }
 
     fun menuClick(holder: ViewHolder, position: Int) {

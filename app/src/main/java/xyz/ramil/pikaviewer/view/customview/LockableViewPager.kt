@@ -1,4 +1,4 @@
-package xyz.ramil.pikaviewer.view
+package xyz.ramil.pikaviewer.view.customview
 
 import android.content.Context
 import android.util.AttributeSet
