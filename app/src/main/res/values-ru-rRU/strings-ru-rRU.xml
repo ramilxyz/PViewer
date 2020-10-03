@@ -11,4 +11,6 @@
     <string name="error"> Ошибка соеднинения! </string>
 
     <string name="not_saves">У вас на данный момент нет сохраненных постов...</string>
+
+    <string name="offline_mode">ПикаВьювер (Оффлайн режим)</string>
 </resources>

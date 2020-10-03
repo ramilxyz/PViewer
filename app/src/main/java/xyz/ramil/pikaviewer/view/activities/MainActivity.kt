@@ -1,10 +1,17 @@
 package xyz.ramil.pikaviewer.view.activities
 
+import android.content.BroadcastReceiver
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import xyz.ramil.pikaviewer.R
+import xyz.ramil.pikaviewer.data.network.NetworkChangeReceiver
 
 class MainActivity : AppCompatActivity() {
+
+    private var mNetworkReceiver: BroadcastReceiver? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,5 +22,38 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             }
         }
+
+        mNetworkReceiver = NetworkChangeReceiver()
+        (mNetworkReceiver as NetworkChangeReceiver).setConnectionListner(object :
+            NetworkChangeReceiver.IConnectionListner {
+            override fun isConnection(boolean: Boolean) {
+                if (boolean)
+                    supportActionBar?.setTitle(getString(R.string.app_name)) else supportActionBar?.setTitle(
+                    R.string.offline_mode
+                )
+            }
+        })
+        registerNetworkBroadcastForNougat()
+    }
+
+    private fun registerNetworkBroadcastForNougat() {
+        registerReceiver(
+            mNetworkReceiver,
+            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        )
+
+    }
+
+    protected fun unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver)
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterNetworkChanges()
     }
 }

@@ -10,4 +10,6 @@
     <string name="error"> Connection error!</string>
 
     <string name="not_saves">You have no saved posts at the moment...</string>
+
+    <string name="offline_mode">PikaViewer (Offline mode)</string>
 </resources>
