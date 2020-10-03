@@ -77,9 +77,6 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
 
         holder.title.text = data[position].title
 
-
-
-
         if (data[position].images != null) {
             if (data[position].images?.size!! > 1)
                 smallImageRvInit(holder, position)
@@ -89,11 +86,7 @@ class PostAdapter(private var data: List<PostModel>, private val context: Contex
                 holder.rv.visibility = View.VISIBLE
             }
         }
-
         menuClick(holder, position)
-
-
-
     }
 
     fun smallImageRvInit(holder: ViewHolder, position: Int) {
