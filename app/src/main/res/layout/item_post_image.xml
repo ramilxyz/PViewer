@@ -10,7 +10,7 @@
         android:background="@color/colorGrayLight"
         android:orientation="vertical"
         android:weightSum="100">
-    <ImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/ivPostPicture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

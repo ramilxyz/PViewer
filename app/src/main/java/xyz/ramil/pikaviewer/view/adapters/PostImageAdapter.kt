@@ -8,8 +8,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.github.chrisbanes.photoview.PhotoView
 import xyz.ramil.pikaviewer.R
-
 
 class PostImageAdapter(private var data: List<String?>?, private val context: Context) :
     RecyclerView.Adapter<PostImageAdapter.ViewHolder>() {
@@ -40,7 +40,7 @@ class PostImageAdapter(private var data: List<String?>?, private val context: Co
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
-        val image: ImageView
+        val image: PhotoView
         override fun onClick(view: View) {}
 
         init {
