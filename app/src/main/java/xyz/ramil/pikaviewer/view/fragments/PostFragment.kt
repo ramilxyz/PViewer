@@ -1,7 +1,9 @@
 package xyz.ramil.pikaviewer.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -39,6 +41,7 @@ class PostFragment(postModel: PostModel) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        setHasOptionsMenu(true)
     }
 
     fun initView() {
@@ -111,4 +114,23 @@ class PostFragment(postModel: PostModel) : Fragment() {
             true
         }
     }
+
+
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item.getItemId()) {
+        android.R.id.home -> {
+            activity?.supportFragmentManager?.popBackStack()
+            return true
+        }
+    }
+    return super.onOptionsItemSelected(item)
 }
+
+
+
+}
+
+
+
+
+

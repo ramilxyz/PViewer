@@ -71,6 +71,5 @@ public class BaseFragment extends Fragment {
             viewPager.setCurrentItem(1);
 
         return view;
-
     }
 }
