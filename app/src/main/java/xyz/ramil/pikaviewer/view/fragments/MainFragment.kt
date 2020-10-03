@@ -48,8 +48,6 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
-
         mainViewModel?.getFeed()
     }
 
@@ -70,12 +68,11 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         postAdapter = context?.let { PostAdapter(mutableListOf(), it, view) }
         recyclerView?.adapter = postAdapter
 
-
         postAdapter?.setOnItemClickListener(object : PostAdapter.OnItemClickListener {
             override fun OnItemClick(postModel: PostModel) {
                 val fragment = PostFragment(postModel)
                 activity?.supportFragmentManager?.beginTransaction()
-                    ?.setCustomAnimations(R.anim.enter_from_left, R.anim.enter_from_right, R.anim.enter_from_left, R.anim.exit_to_right)
+                    ?.setCustomAnimations(R.anim.scale_in, R.anim.scale_out)
                     ?.add(R.id.rootView, fragment, "PostFragment" + postModel)
                     ?.addToBackStack(null)?.commit()
             }
@@ -98,7 +95,6 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             } else {
                 postAdapter?.update(data, view)
             }
-
         })
     }
 
@@ -150,7 +146,6 @@ class MainFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     fun setIsSaveScreen(boolean: Boolean) {
         isSave = boolean
     }
-
 }
 
 
